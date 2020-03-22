@@ -4,13 +4,13 @@ html {
 }
 body {
     text-align: center;
-    vertical-align: center;
     width: 100%;
     height: 100%;
     background-color: #123456;
 }
 
 h1 {
+    margin-top: 50px;
     color: whitesmoke;
     font-family: Arial, Helvetica, sans-serif;
 }
@@ -23,6 +23,7 @@ h1 {
     border-radius: 5%;
     padding: 3px;
     margin: auto;
+    margin-top: 75px;
     
     grid-template-rows: repeat(7, 1fr);
     grid-template-columns: repeat(5, 1fr);
@@ -45,15 +46,16 @@ h1 {
 
 .btn {
     font-size: medium;
-    
+    outline: none;
     border-radius: 5px;
     margin: 1px;
 }
 
+
+
 .eql {
     font-weight: bold;
     grid-area: EQL;
-    background-color: rgba(213, 222, 224, 0.904);
     border-radius: 10px;
     
 }
@@ -65,9 +67,16 @@ h1 {
     align-items: flex-end;
     justify-content: flex-end;
 
-    font-size: large;
+    font-size: auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
 
-    background-color: rgba(125, 156, 62, 0.787);
+    border-left: 2px solid olive;
+    border-right: 2px solid olive;
+    border-top: 2px solid olive;
+    border-bottom: 1px solid olive;
+
+    background-color: #7d9c3ec9;
     border-radius: 10px;
     margin-top: 5px;
     margin-bottom: 5px;
@@ -98,6 +107,6 @@ h1 {
 }
 .smile {
     grid-area: smile;
-    background-image: linear-gradient(319deg, #27b6fd 0%, #ffe552 40%, #fa535e 100%);
+    /* background-image: linear-gradient(319deg, #27b6fd 0%, #ffe552 40%, #fa535e 100%); */
 
 }
