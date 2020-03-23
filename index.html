@@ -8,16 +8,20 @@
 </head>
 <body>
     <h1>The Odin Project Calculator</h1>
+    <div id="instructions" class="instructions"> 
+            <div>click buttons for input or type with keyboard</div>
+            <div>press backspace to delete last input</div>
+    </div>
     <div id="container" class="container">
         <div id="screen" class="screen">
-            <div id="cache"></div>
-            <div id="input"></div>
+            <div class="cache" id="cache"></div>
+            <div class="inpt" id="input"></div>
         </div>
 
         <button id="delete" class="btn del">DEL</button>
         <button id="open" class="btn bracket">(</button>
         <button id="close" class="btn bracket">)</button>
-        <button id="ce" class="btn CE">CE</button>
+        <button id="mod" class="btn op">%</button>
         <button id="c" class="btn C">C</button>
         <button id="7" class="btn num">7</button>
         <button id="8" class="btn num">8</button>
