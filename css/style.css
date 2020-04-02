@@ -10,7 +10,7 @@ body {
 }
 
 h1 {
-    color: whitesmoke;
+    color: #f5f5f5;
     font-family: Arial, Helvetica, sans-serif;
     
     text-align: center;
@@ -21,8 +21,8 @@ h1 {
 .instructions {
     display: flex;
     flex-direction: column;
-    /* border: 1px solid whitesmoke; */
-    color: whitesmoke;
+    /* border: 1px solid #f5f5f5; */
+    color: #f5f5f5;
     font-family: Arial, Helvetica, sans-serif;
     align-items: center;
     
@@ -32,9 +32,9 @@ h1 {
 .container {
     display: grid;
 
-    background-color: darkgrey;
+    background-color: #a9a9a9;
 
-    border: 2px solid whitesmoke;
+    border: 2px solid #f5f5f5;
     border-radius: 5%;
     padding: 3px;
     margin: auto;
@@ -77,6 +77,7 @@ h1 {
     text-overflow: ellipsis;
 }
 .btn {
+    color: black;
     font-size: medium;
     outline: none;
     border-radius: 5px;
@@ -98,14 +99,14 @@ h1 {
     flex-direction: column;
     
 
+    font-family: Arial, Helvetica, sans-serif;
     
-    
-    border-left: 2px solid olive;
-    border-right: 2px solid olive;
-    border-top: 2px solid olive;
-    border-bottom: 1px solid olive;
+    border-left: 2px solid #5d6e39;
+    border-right: 1px solid #5d6e39;
+    border-top: 2px solid #5d6e39;
+    border-bottom: 1px solid #5d6e39;
 
-    background-color: #7d9c3ec9;
+    background-color: #9fbe60c9;
     border-radius: 10px;
     margin-top: 5px;
     margin-bottom: 5px;
@@ -114,7 +115,7 @@ h1 {
 
 .op {
     
-    color: whitesmoke;
+    color: #f5f5f5;
     background-color: #123456;
 }
 
@@ -127,7 +128,7 @@ h1 {
     background-color: #d8a311c9;
 }
 .bracket {
-    color: whitesmoke;
+    color: #f5f5f5;
     background-color: #2e2e2ed7;
 }
 .smile {
