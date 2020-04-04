@@ -31,8 +31,6 @@ const calculator = {
         calculator.expressionParts.push(input); 
         inputFlags.decimal = false;
         calculator.currentItem = '';
-
-        console.log('input:', calculator.expressionParts,);
     },
 }
 
@@ -240,12 +238,8 @@ function deleteLastInput() {
             } else if (isOperator(lastInput)) { //if should be redundant but leaving in for now // TODO maybe remove? 
                 calculator.expressionParts.pop();
                 if((/\./).test(`${calculator.lastInput()}`)) inputFlags.decimal=true;
-                console.log('true?', inputFlags.decimal);
             }
-            console.log('lastInput:', lastInput);
     }
-
-    console.log('calc:', calculator, 'flags:', inputFlags);
     lowerScreen.textContent = lowerScreen.textContent.slice(0, lowerScreen.textContent.length-1);
 }
 
@@ -297,13 +291,11 @@ function operate(op, num1, num2) {
 
 
 function evaluateInput(input) {
-    console.log(input);
     // evaluate all parenthesized subexpressions
     let inputCopy = input;
     while(inputCopy.find(element => (/\(/).test(element))) {
         let i=0;
         inputCopy = evalNextParenthesizedExpression(inputCopy);
-        console.log('this is:', (++i), 'and input:', inputCopy);
     }
     
     if (inputCopy.length === 1) {
@@ -313,7 +305,6 @@ function evaluateInput(input) {
     // the expression in two parts
     let lastOperator = inputCopy[inputCopy.length-2];
     let splittingIndex = inputCopy.length-2;
-    console.log('operator:', lastOperator, 'index:', splittingIndex)
 
     // if there's "-" pr "+" change location to split to it
     for (let index = inputCopy.length; index > 0; index--) {
@@ -323,13 +314,10 @@ function evaluateInput(input) {
             break;
         }
     }
-    console.log('operator:', lastOperator, 'index:', splittingIndex)
     const lefthandExpr = inputCopy.slice(0, splittingIndex);
     const righthandExpr = inputCopy.slice(splittingIndex+1);
-    console.log('left', lefthandExpr, 'right', righthandExpr);  
     
     const result = operate(lastOperator, evaluateInput(lefthandExpr), evaluateInput(righthandExpr));
-    console.log(result);
     return result;
 }
 
@@ -357,11 +345,9 @@ function evalNextParenthesizedExpression(expr){
     //split array in it's parts with evaluated subexpr;
     const negative = expr[subexprStart][0] === '-';
     const subexpr = expr.slice(subexprStart+1, subexprEnd)   
-    console.log('the subexpression...', subexpr);
     const returnValue = [...expr.slice(0, subexprStart), 
         (negative)?(operate('*', -1, evaluateInput(subexpr))):evaluateInput(subexpr), 
         ...expr.slice(subexprEnd+1) ];
-    console.log('the returnvAL...', returnValue);
     return returnValue;
     
 }
