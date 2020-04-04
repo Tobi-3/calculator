@@ -180,6 +180,7 @@ function handleInput(key){
                 calculator.expressionParts = [];
                 calculator.currentItem = `${output}`;
                 lowerScreen.textContent = output;
+                if((/\./).test(calculator.currentItem)) inputFlags.decimal=true;
             }
             break;
 
@@ -229,13 +230,17 @@ function deleteLastInput() {
                     calculator.parenthesesCount++;
                     inputFlags.anyParenOpen = true;
                     calculator.expressionParts.pop();
+                    if((/\./).test(`${calculator.lastInput()}`)) inputFlags.decimal=true;
                     break;
             }
             if(typeof(lastInput)=== 'number'){
                 calculator.expressionParts.pop();
                 calculator.currentItem = `${lastInput}`.substr(0, `${lastInput}`.length-1);
+                
             } else if (isOperator(lastInput)) { //if should be redundant but leaving in for now // TODO maybe remove? 
                 calculator.expressionParts.pop();
+                if((/\./).test(`${calculator.lastInput()}`)) inputFlags.decimal=true;
+                console.log('true?', inputFlags.decimal);
             }
             console.log('lastInput:', lastInput);
     }
@@ -243,6 +248,7 @@ function deleteLastInput() {
     console.log('calc:', calculator, 'flags:', inputFlags);
     lowerScreen.textContent = lowerScreen.textContent.slice(0, lowerScreen.textContent.length-1);
 }
+
 
 function clearScreen(){
     lowerScreen.textContent = '';
@@ -305,18 +311,19 @@ function evaluateInput(input) {
     } 
     // choose last used operator in input as location to split 
     // the expression in two parts
-    let lastOperator = input[input.length-2];
-    let splittingIndex = input.lastIndexOf(lastOperator);
+    let lastOperator = inputCopy[inputCopy.length-2];
+    let splittingIndex = inputCopy.length-2;
+    console.log('operator:', lastOperator, 'index:', splittingIndex)
 
     // if there's "-" pr "+" change location to split to it
-    for (let index = inputCopy.length-2; index >= 0; index-=2) {
-        if ((/[-+]/).test(inputCopy[index])) {
+    for (let index = inputCopy.length; index > 0; index--) {
+        if ((/^[-+]$/).test(inputCopy[index])) {
             splittingIndex = index;
             lastOperator = inputCopy[index];
             break;
         }
     }
-    
+    console.log('operator:', lastOperator, 'index:', splittingIndex)
     const lefthandExpr = inputCopy.slice(0, splittingIndex);
     const righthandExpr = inputCopy.slice(splittingIndex+1);
     console.log('left', lefthandExpr, 'right', righthandExpr);  
